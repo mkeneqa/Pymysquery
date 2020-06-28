@@ -51,7 +51,10 @@ _db.TruncateTable('users')
 
 **Fetch All**
 ```
-_db.FetchAll("SELECT * FROM users")
+rows = _db.FetchAll("SELECT * FROM users")
+
+for row in rows:
+    rid,first_name,last_name,is_active = row
 ```
 
 **Fetch One**
