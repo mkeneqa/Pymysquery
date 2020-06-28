@@ -36,8 +36,8 @@ Some Benefits of Using this class:
 **Initialize Database Connection**
 ```python
 import pymydb as _db
-_db.DBUSR = 'db_user'
-_db.DBPSWD = 'db_pswd'
+_db.Database.DBUSR = 'db_user'
+_db.Database.DBPSWD = 'db_pswd'
 host_ip = '192.168.10.10'
 db_name = 'my_db'
 _db = DB.Database(host_ip,db_name)
