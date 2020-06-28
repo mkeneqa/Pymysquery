@@ -39,7 +39,7 @@ _db.Connect()
 
 **Truncate Table**
 ```
-_db.TruncateTable('user')
+_db.TruncateTable('users')
 ```
 
 **Fetch All**
