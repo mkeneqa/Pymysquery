@@ -51,6 +51,7 @@ _db.TruncateTable('users')
 
 **Fetch All**
 ```
+# returns a list of coloumn names as Tuples
 rows = _db.FetchAll("SELECT * FROM users")
 
 for row in rows:
