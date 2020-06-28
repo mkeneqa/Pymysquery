@@ -17,7 +17,7 @@ This is a compilation of commonly used database functions I've used over the yea
  - `python -m pip install PyMySQL`
  - `python -m pip install pandas`
 
-### Option 2 - Download the `pymydb `file :
+### Option 2 - Download the `pymydb` file :
 
  - Download the [`mypydb.py` ](https://github.com/mkeneqa/mypydb/blob/master/mypydb.py) file and place it in your project
 - `python -m pip install PyMySQL`
