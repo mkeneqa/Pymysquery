@@ -1,10 +1,17 @@
 ## MyPyDb Database Class
 
-A Python3 Object Oriented Database wrapper class for the **[PyMySQL]([https://pypi.org/project/PyMySQL/](https://pypi.org/project/PyMySQL/))** module.
+A Python3 Object Oriented Database wrapper class for the **[PyMySQL]([https://pypi.org/project/PyMySQL/](https://pypi.org/project/PyMySQL/))** module. 
 
 This is a compilation of commonly used database functions I've used over the years when using the PyMySQL module for querying Maria/MySQL databases.
 
-**DISCLAIMER:** This is a WIP and requires testing and better documentation. Please use at your own risk.
+Some Benefits of Using this class:
+- Plug-and-play
+- Out-of-the-box support of database transactions - commit and rollbacks
+- Clear database functions calls: fetch, update, delete, truncate
+- Easily manage multiple database connections by object instantiation
+- and more!
+
+**DISCLAIMER:** This is a WIP and requires testing and better documentation.
 
 ## Get Started
 ### Option 1 - Clone The Repo:
@@ -50,4 +57,9 @@ _db.FetchAll("SELECT * FROM users")
 **Fetch One**
 ```
 _db.FetchOne("SELECT `id` FROM users LIMIT 1")
+```
+
+**Close Connection**
+```
+_db.CloseConn()
 ```
