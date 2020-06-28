@@ -49,5 +49,5 @@ _db.FetchAll("SELECT * FROM users")
 
 **Fetch One**
 ```
-_db.FetchOne("SELECT `id` FROM users LIMIT 2")
+_db.FetchOne("SELECT `id` FROM users LIMIT 1")
 ```
