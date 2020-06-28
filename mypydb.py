@@ -261,19 +261,3 @@ class Database(object):
 
         finally:
             print("Delete Query : " + str(qry))
-
-    def DeleteFileTypeFromDB(self, file_type, db_table):
-
-        sQry = "DELETE FROM " + self.DBNAME + "." + db_table + " WHERE file_type = '" + file_type + "'"
-
-        print("qry= " + sQry)
-
-        try:
-            self.CURSR.execute(sQry)
-            self.DBO.commit()
-            print("Deleted " + file_type + " File Type from DB Table")
-
-        except Exception as e:
-
-            self.DBO.rollback()
-            print("!!Error Deleting File Types : " + str(e))
