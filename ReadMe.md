@@ -37,10 +37,12 @@ Some Benefits of Using this class:
 ```python
 import pymydb
 
-pymydb.Database.DBUSR = 'db_user'
-pymydb.Database.DBPSWD = 'db_pswd'
 host_ip = '192.168.10.10'
 db_name = 'my_db'
+
+pymydb.Database.DBUSR = 'db_user'
+pymydb.Database.DBPSWD = 'db_pswd'
+
 _db = pymydb.Database(host_ip,db_name)
 
 _db.Connect()
