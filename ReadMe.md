@@ -49,25 +49,26 @@ _db.Connect()
 ```
 
 **Truncate Table**
-```
+```python
 _db.TruncateTable('users')
 ```
 
 **Fetch All**
-```
+```python
 # returns a list of coloumn names as Tuples
 rows = _db.FetchAll("SELECT * FROM users")
 
 for row in rows:
     rid,first_name,last_name,is_active = row
+    # do something ...
 ```
 
 **Fetch One**
-```
+```python
 _db.FetchOne("SELECT `id` FROM users LIMIT 1")
 ```
 
 **Close Connection**
-```
+```python
 _db.CloseConn()
 ```
