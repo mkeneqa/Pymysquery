@@ -16,10 +16,10 @@ Some Benefits of Using this class:
 ## Get Started
 ### Option 1 - Clone The Repo:
  - `git clone https://github.com/mkeneqa/mypydb.git`
- - `python3 -m venv env` (unix) or `py -m venv env` (win)
+ - `python3 -m venv venv` (unix) or `py -m venv venv` (win)
  - Activate Environment:
-	 - **UNIX**: `source env/bin/activate` 
-     - **WINDOWS**: `.\env\Scripts\activate`
+	 - **UNIX**: `source venv/bin/activate` 
+     - **WINDOWS**: `.\venv\Scripts\activate`
  - **Optional:** `python -m pip install --upgrade pip`
  - `python -m pip install PyMySQL`
  - `python -m pip install pandas`
