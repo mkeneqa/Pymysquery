@@ -24,14 +24,6 @@ class Database(object):
         self.DBO = self.Connect()
         self.CURSR = self.DBO.cursor()
 
-    def Connect(self):
-        return pymysql.connect(
-            host=self.HOST,
-            user=self.DBUSR,
-            passwd=self.DBPSWD,
-            db=self.DBNAME
-        )
-
     def SetHost(self, hostname):
         self.HOST = hostname
 
