@@ -1,5 +1,6 @@
 import pymysql
 import pandas
+import logging
 
 
 class Database(object):
@@ -21,7 +22,12 @@ class Database(object):
         self.PORT = the_port
         self.DBPSWD = the_passwd
         self.DBUSR = the_user
-        self.DBO = self.Connect()
+        self.DBO = pymysql.connect(
+            host=self.HOST,
+            user=self.DBUSR,
+            passwd=self.DBPSWD,
+            db=self.DBNAME
+        )
         self.CURSR = self.DBO.cursor()
 
     def SetHost(self, hostname):
@@ -171,8 +177,7 @@ class Database(object):
         rows = None
         try:
             self.SetQryStr(sQry)
-            db = self.Connect()
-            cursor = db.cursor()
+            cursor = self.CURSR
             cursor.execute(sQry)
             rows = cursor.fetchall()
 
@@ -192,8 +197,9 @@ class Database(object):
 
         try:
             # print("TRY BLOCK")
-            db = self.Connect()
-            cursor = db.cursor()
+            # db = self.Connect()
+            # cursor = db.cursor()
+            cursor = self.CURSR
             cursor.execute(sQry)
             row = cursor.fetchone()
 
@@ -257,3 +263,91 @@ class Database(object):
 
         finally:
             print("Delete Query : " + str(qry))
+
+    def DeleteRowById(self, db_table, row_id: int):
+
+        sQry = "DELETE FROM {}.{} WHERE `id`={}".format(self.DBNAME, db_table, row_id)
+
+        try:
+            self.CURSR.execute(sQry)
+            self.DBO.commit()
+            msg = "Deleted row id: {} from {}.{}".format(row_id, self.DBNAME, db_table)
+            print(msg)
+            logging.info(msg)
+
+        except Exception as e:
+
+            self.DBO.rollback()
+            msg = "!!Error Deleting Row : " + str(e)
+            print(msg)
+            logging.error(msg)
+
+    def AddColoumn(self, table_name, coloumn_name: str, data_type: str, data_size=None):
+
+        # eg ALTER TABLE table_name ADD column_name datatype
+        if data_size is not None:
+            data_type = "{}({})".format(data_type, data_size)
+
+        try:
+            self.CURSR.execute("ALTER TABLE {} ADD {}".format(coloumn_name, data_type))
+            print("Successfully ADDED COLOUMN {} to TABLE {} ".format(coloumn_name, table_name))
+        except Exception as e:
+            self.DBO.rollback()
+            print("!!Error Could Not ADD COLOUMN {} to TABLE {} ".format(coloumn_name, table_name))
+            print("ERR:" + str(e))
+
+    def CreateTable(self, table_name: str, table_cols=None):
+
+        qry = [f"CREATE TABLE {table_name} (",
+               "`id` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, "]
+
+        # eg: https://www.w3schools.com/php/php_mysql_create_table.asp
+        if table_cols is not None:
+            qry.append(", ".join(table_cols))
+
+        qry.append(")")
+
+        try:
+            statement = " ".join(qry)
+            self.CURSR.execute(statement)
+            print("Successfully Created " + table_name)
+            print("CREATE STATEMENT: " + statement)
+        except Exception as e:
+            self.DBO.rollback()
+            print("!!Error Could Not CREATE TABLE: " + table_name)
+            print("ERR MSG:" + str(e))
+
+    def DropTable(self, table_name: str):
+        qry = f"DROP TABLE {table_name}"
+        try:
+            self.CURSR.execute(qry)
+            print(f"Successfully DELETED TABLE {table_name}")
+            print("RENAME QRY =" + qry)
+        except Exception as e:
+            self.DBO.rollback()
+            print("!!Error Could Not DELETE TABLE: " + table_name)
+            print("ERR MSG:" + str(e))
+
+    def TruncateColoumn(self, db_table: str, col_name: str):
+
+        col_value = None or "NULL"
+        qry = f"UPDATE `project_list` SET `note`={col_value}"
+        try:
+            self.SetQryStr(qry)
+            self.CURSR.execute(qry)
+            self.DBO.commit()
+        except Exception as e:
+            self.DBO.rollback()
+            print("!!Error Truncating {} coloumn in {} table: {} ".format(db_table, col_name, str(e)))
+
+    def RenameTable(self, old_table_name: str, new_table_name: str):
+
+        qry = f"ALTER TABLE {old_table_name} RENAME TO {new_table_name}"
+        try:
+            self.CURSR.execute(qry)
+            print("Successfully RENAMED {} table to {} ".format(old_table_name, new_table_name))
+            print("RENAME QRY =" + qry)
+        except Exception as e:
+            self.DBO.rollback()
+            print("!!Error Could Not RENAME TABLE: " + old_table_name)
+            print("ERR MSG:" + str(e))
