@@ -1,0 +1,28 @@
+[
+  {
+    "table_name": "My Table",
+    "coloumns": [
+      "name VARCHAR(50)",
+      "birthday DATE",
+      "code INT(10)"
+    ],
+    "data": {
+      "name": "Eric",
+      "birthday": "12-20-2005",
+      "code": 1234
+    }
+  },
+  {
+    "table_name": "My Table",
+    "coloumns": [
+      "name VARCHAR(50)",
+      "birthday DATE",
+      "code INT(10)"
+    ],
+    "data": {
+      "name": "Eric",
+      "birthday": "12-20-2005",
+      "code": 1234
+    }
+  }
+]
