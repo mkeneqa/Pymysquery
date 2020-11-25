@@ -13,7 +13,7 @@
     }
   },
   {
-    "table_name": "My Table",
+    "table_name": "My Table 2",
     "coloumns": [
       "name VARCHAR(50)",
       "birthday DATE",
