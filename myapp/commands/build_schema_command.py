@@ -31,9 +31,25 @@ class BuildSchemaCommand(Command):
             the_user=user
         )
 
+        table = [
+            "name VARCHAR(20)",
+            "birth DATE",
+            "SIN INT(10)"
+        ]
+        _db.CreateTable(table_name='TestTable', table_cols=table)
+        _db.InsertTableValues(db_table='TestTable',
+                              cols=['`name`', '`birth`', '`SIN`'],
+                              vals=['Ericcson', '1976-05-31', 1425],
+                              verbose_print=True)
 
+        _db.InsertDictionaryValues('TestTable', {
+            '`name`': 'Jeremiah',
+            '`birth`': '1980-04-10',
+            '`SIN`': 9890
+        }, verbose_print=True)
 
-        # config.read()
+        # _db.TruncateTable('TestTable')
+        # _db.DropTable('TestTable')
 
         # _db = Database(
         #
