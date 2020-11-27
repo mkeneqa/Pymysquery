@@ -138,7 +138,7 @@ class Database(object):
         self.InsertTableValues(db_table, col_names, col_vals, verbose_print)
 
     def InsertTableValues(self, db_table, cols, vals, verbose_print=False):
-        sQry = "INSERT INTO `" + db_table + "` "
+        sQry = "INSERT INTO {} ".format(db_table)
         sQry += "(" + ",".join(cols) + ") "
         sQry += "VALUES (" + ",".join(['%s'] * len(cols)) + ")"
 
@@ -322,7 +322,7 @@ class Database(object):
         try:
             self.CURSR.execute(qry)
             print(f"Successfully DELETED TABLE {table_name}")
-            print("RENAME QRY =" + qry)
+            print("DROP QRY = " + qry)
         except Exception as e:
             self.DBO.rollback()
             print("!!Error Could Not DELETE TABLE: " + table_name)
