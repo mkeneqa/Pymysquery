@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-import pytest
 from cleo.application import Application
 from cleo.testers import CommandTester
-from pysquery.commands.hello_world_command import HelloWorldCommand
+from commands import HelloWorldCommand
 
 
 def test_execute_hello_world_command():

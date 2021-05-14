@@ -2,14 +2,18 @@ from cleo import Command
 from pysquery.data.database import Database
 import configparser
 import pathlib
+from pysquery import MyDB
 
 
-class DbActionCommand(Command):
+class DBStartCommand(Command):
     """
-    Will Build Sample Database Schema
+    DB Testing
 
-    go_build
+    db_start
 
     """
 
     def handle(self):
+        self.line("DB Start ...")
+        db = MyDB()
+        # db = DB()
