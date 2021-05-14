@@ -2,7 +2,7 @@
 import pytest
 from cleo.application import Application
 from cleo.testers import CommandTester
-from myapp.commands.hello_world_command import HelloWorldCommand
+from pysquery.commands.hello_world_command import HelloWorldCommand
 
 
 def test_execute_hello_world_command():

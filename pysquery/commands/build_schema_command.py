@@ -1,5 +1,5 @@
 from cleo import Command
-from myapp.data.database import Database
+from pysquery.data.database import Database
 import configparser
 import pathlib
 

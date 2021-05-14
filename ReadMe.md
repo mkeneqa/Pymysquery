@@ -1,4 +1,6 @@
-## MyPyDb Database Class
+## PySQuery Database Module
+
+Formerly known as _MyPyDb Database Class_
 
 A Python3 Object Oriented Database wrapper class for the **[PyMySQL]([https://pypi.org/project/PyMySQL/](https://pypi.org/project/PyMySQL/))** module. 
 
