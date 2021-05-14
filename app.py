@@ -1,6 +1,7 @@
 from cleo import Application
 import logging
-from pysquery.commands import hello_world_command,build_schema_command
+from commands import hello_world_command
+from commands import build_schema_command
 
 tasks = [
     hello_world_command.HelloWorldCommand(),
@@ -18,4 +19,3 @@ if __name__ == '__main__':
         format="%(levelname) -10s %(asctime)s %(module)s:%(lineno)s %(funcName)s %(message)s"
     )
     app.run()
-

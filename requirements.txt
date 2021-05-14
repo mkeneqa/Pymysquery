@@ -2,3 +2,4 @@ pymysql
 pandas
 cleo
 pytest
+prodict

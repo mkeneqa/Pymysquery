@@ -1,5 +1,5 @@
 from cleo import Application
-from pysquery.commands.hello_world_command import HelloWorldCommand
+from commands import HelloWorldCommand
 
 app = Application()
 app.add(HelloWorldCommand())
