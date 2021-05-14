@@ -1,6 +1,6 @@
 from cleo import Application
 import logging
-from myapp.commands import hello_world_command,build_schema_command
+from pysquery.commands import hello_world_command,build_schema_command
 
 tasks = [
     hello_world_command.HelloWorldCommand(),
