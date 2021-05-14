@@ -1,1 +1,1 @@
-from .mysql import MySQLConn
+from .mysql import MyDB

@@ -22,7 +22,7 @@ class Config(Prodict):
         self.cursor_class = pymysql.cursors.DictCursor
 
 
-class MyDB(ConnectionBase):
+class Connection(ConnectionBase):
     user_cursor_dictionary = False
     CONN = None
 
