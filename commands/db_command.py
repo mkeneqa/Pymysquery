@@ -15,5 +15,12 @@ class DBStartCommand(Command):
 
     def handle(self):
         self.line("DB Start ...")
+        config = MyConfig()
         db = MyDB()
+        # db.connect(
+        #     config.db_user="db_user",
+        #     config.db_name="db_name",
+        #
+        # )
+        db.config.host = ''
         # db = DB()
