@@ -1,4 +1,4 @@
-from pysquery.builder._select_base import SelectBase
+from pymysquery.builder._select_base import SelectBase
 
 
 class Select(SelectBase):

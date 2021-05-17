@@ -1,8 +1,8 @@
 from cleo import Command
-from pysquery.data.database import Database
+from pymysquery.data.database import Database
 import configparser
 import pathlib
-from pysquery import MyDB
+from pymysquery import MyDB
 
 
 class DBStartCommand(Command):
