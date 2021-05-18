@@ -2,4 +2,4 @@
 venv
 __pycache__
 *.log
-config.txt
+config.py
