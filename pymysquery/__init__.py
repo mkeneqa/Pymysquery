@@ -1,1 +1,1 @@
-from .mysql import MyDB
+from .mysql import DB as MyDB

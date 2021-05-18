@@ -2,8 +2,9 @@ import pymysql
 import pymysql.cursors
 from prodict import Prodict
 
-from ..connection_base import ConnectionBase
 
+from ..connection_base import ConnectionBase
+from ..builder.select_base import SelectBase
 
 class _Config(Prodict):
     host: str
@@ -17,6 +18,7 @@ class _Config(Prodict):
     def init(self):
         self.cursor_class = None
         self.charset = 'utf8mb4'
+        self.port = 3306
 
     def enable_dict_cursor(self):
         self.cursor_class = pymysql.cursors.DictCursor
@@ -36,21 +38,26 @@ class Connection(ConnectionBase):
     CONN = None
     config = _Config()
 
-    def __init__(self, host='', port='', db_name='', db_user='', db_passwd='', charset='utf8mb4', enable_cursor=False):
-        if host:
-            self.config.host = host
-        if port:
-            self.config.port = port
-        if db_name:
-            self.config.db_name = db_name
-        if db_user:
-            self.config.db_user = db_user
-        if db_passwd:
-            self.config.passwd = db_passwd
-
-        self.config.charset = charset
-        if enable_cursor:
-            self.config.enable_dict_cursor()
+    # def __init__
+    # (self, host='', port=3306, db_name='', db_user='', db_passwd='', charset='utf8mb4', enable_cursor=False):
+    #     if host:
+    #         self.config.host = host
+    #
+    #     if port:
+    #         self.config.port = port
+    #
+    #     if db_name:
+    #         self.config.db_name = db_name
+    #
+    #     if db_user:
+    #         self.config.db_user = db_user
+    #
+    #     if db_passwd:
+    #         self.config.passwd = db_passwd
+    #
+    #     self.config.charset = charset
+    #     if enable_cursor:
+    #         self.config.enable_dict_cursor()
 
     def connect(self):
         # TODO: implement config
