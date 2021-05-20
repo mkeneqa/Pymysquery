@@ -2,9 +2,11 @@ import abc
 
 
 class CrudBase(metaclass=abc.ABCMeta):
-    def table(self):
+    @abc.abstractmethod
+    def table(self, name: str):
         return self
 
+    @abc.abstractmethod
     def where(self):
         return self
 

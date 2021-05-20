@@ -1,9 +1,16 @@
 from .connection import Connection
 from .select import Select
 from .crud import Crud
+import enum
 
 
-class DB(Select, Crud):
+class DataType(enum.Enum):
+    EQLS = '='
+    GTE = '>='
+    LTE = '<='
+
+
+class DB(Select, Crud, DataType):
 
     def __init__(self, host='', port=3306, db_name='', db_user='', db_passwd='', charset='utf8mb4',
                  enable_cursor=False):

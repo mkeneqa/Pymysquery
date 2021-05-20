@@ -4,7 +4,7 @@ import abc
 class SelectBase(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
-    def select(self):
+    def select(self, coloumns: str):
         raise NotImplementedError("You should implement this!")
 
     @abc.abstractmethod
